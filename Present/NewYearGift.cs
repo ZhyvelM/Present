@@ -33,7 +33,7 @@ namespace Present
             double totalWeight = 0;
             foreach (Candy c in candies)
             {
-                totalWeight += c.weight;
+                totalWeight += c.weight * c.count;
             }
             return totalWeight;
         }
