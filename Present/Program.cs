@@ -6,7 +6,6 @@ namespace Present
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }
