@@ -7,23 +7,23 @@ namespace Present
         static void Main(string[] args)
         {
             NewYearGift gift = new NewYearGift();
-            gift.add(new CandyBar("Snickers", "Nutella", 100, 10, 5));
-            gift.add(new Lolipop("Chupa Chups", "Chupa Chups", 30, 5, 1));
-            gift.add(new BubbleGum("Hubba bubba", "Wrigley", 60, 10, 2));
-            gift.add(new Marmalade("Marmalade Fruits", "no information", 50, 20, 10));
+            gift.Add(new CandyBar("Snickers", "Nutella", 100, 10, 5));
+            gift.Add(new Lolipop("Chupa Chups", "Chupa Chups", 30, 5, 1));
+            gift.Add(new BubbleGum("Hubba bubba", "Wrigley", 60, 10, 2));
+            gift.Add(new Marmalade("Marmalade Fruits", "no information", 50, 20, 10));
 
 
             Console.WriteLine(gift);
-            gift.sortByName();
+            gift.SortByName();
             Console.WriteLine(gift);
-            gift.sortByManufacturer();
+            gift.SortByManufacturer();
             Console.WriteLine(gift);
-            gift.sortByWeigth();
+            gift.SortByWeigth();
             Console.WriteLine(gift);
-            gift.sortBySugar();
+            gift.SortBySugar();
             Console.WriteLine(gift);
-            Console.WriteLine("total weigth:" + gift.getWeight()+"\n");
-            foreach(Candy c in gift.getCandiesBySugarRange(7,12))
+            Console.WriteLine("total weigth:" + gift.GetWeight()+"\n");
+            foreach(Candy c in gift.GetCandiesBySugarRange(7,12))
             {
                 Console.Write(c);
             }

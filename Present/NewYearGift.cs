@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Present.Sorters;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,73 +7,64 @@ namespace Present
 {
     class NewYearGift
     {
-        List<Candy> candies;
+        List<Candy> Candies { get; }
 
         public NewYearGift()
         {
-            candies = new List<Candy>();
+            Candies = new List<Candy>();
         }
 
         public override string ToString()
         {
             string output = "";
-            foreach (Candy c in candies) 
+            foreach (Candy c in Candies) 
             {
                 output += c;
             }
             return output;
         }
 
-        public void add(Candy candy)
+        public void Add(Candy candy)
         {
-            candies.Add(candy);
+            Candies.Add(candy);
         }
 
-        public double getWeight()
+        public double GetWeight()
         {
             double totalWeight = 0;
-            foreach (Candy c in candies)
+            foreach (Candy c in Candies)
             {
-                totalWeight += c.weight * c.count;
+                totalWeight += c.Weight * c.Count;
             }
             return totalWeight;
         }
 
-        public List<Candy> getCandiesBySugarRange(double x, double y)
+        public List<Candy> GetCandiesBySugarRange(double min, double max)
         {
             List<Candy> newList = new List<Candy>();
-            if (x > y)
+            foreach (Candy c in Candies)
             {
-                double c = x;
-                x = y;
-                y = c;
-            }
-            foreach (Candy c in candies)
-            {
-                if (c.sugar >= x && c.sugar <= y)
+                if (c.Sugar >= min && c.Sugar <= max)
                 newList.Add(c);
             }
             return newList;
         }
 
-        public void sortByWeigth()
+        public void SortByWeigth()
         {
-            candies.Sort(new Candy_SortByWeight());
+            Candies.Sort(new CandyByWeightSorter());
         }
-
-        public void sortBySugar()
+        public void SortBySugar()
         {
-            candies.Sort(new Candy_SortBySugar());
+            Candies.Sort(new CandyBySugarSorter());
         }
-
-        public void sortByName()
+        public void SortByName()
         {
-            candies.Sort(new Candy_SortByName());
+            Candies.Sort(new CandyByNameSorter());
         }
-
-        public void sortByManufacturer()
+        public void SortByManufacturer()
         {
-            candies.Sort(new Candy_SortByManufacturer());
+            Candies.Sort(new CandyByManufacturerSorter());
         }
     }
 }

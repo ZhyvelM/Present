@@ -7,59 +7,63 @@ namespace Present
 {
     public abstract class Candy
     {
-        public string name;
-        public string manufacturer;
-        public double weight;
-        public double sugar;
-        public int count;
+        public string Name { get; }
+        public string Manufacturer{get; }
+        public double Weight { get; }
+        public double Sugar { get; }
+        public int Count { get; }
 
         public Candy(string name, string manufacturer, double weight, double sugar, int count)
         {
-            this.name = name;
-            this.manufacturer = manufacturer;
-            this.weight = weight;
-            this.sugar = sugar;
-            this.count = count;
+            Name = name;
+            Manufacturer = manufacturer;
+            Weight = weight;
+            Sugar = sugar;
+            Count = count;
         }
 
         public override string ToString()
         {
-            return name + " " + manufacturer + " weight: " + weight + " sugar: " + sugar + "\n"; ;
+            return $"{Name} Manufacturer:{Manufacturer} weight: {Weight} sugar: {Sugar}";
         }
     }
-        class Candy_SortByWeight : IComparer<Candy>
-        {
-            public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
-            {
-                if (x.weight < y.weight) return 1;
-                else if (x.weight > y.weight) return -1;
-                else return 0;
-            }
-        }
+}
 
-        class Candy_SortBySugar : IComparer<Candy>
+namespace Present.Sorters
+{
+    class CandyByWeightSorter : IComparer<Candy>
+    {
+        public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
         {
-            public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
-            {
-                if (x.sugar < y.sugar) return 1;
-                else if (x.sugar > y.sugar) return -1;
-                else return 0;
-            }
+            if (x.Weight < y.Weight) return 1;
+            else if (x.Weight > y.Weight) return -1;
+            else return 0;
         }
+    }
 
-        class Candy_SortByName : IComparer<Candy>
+    class CandyBySugarSorter : IComparer<Candy>
+    {
+        public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
         {
-            public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
-            {
-                return x.name.CompareTo(y.name);
-            }
+            if (x.Sugar < y.Sugar) return 1;
+            else if (x.Sugar > y.Sugar) return -1;
+            else return 0;
         }
+    }
 
-        class Candy_SortByManufacturer : IComparer<Candy>
+    class CandyByNameSorter : IComparer<Candy>
+    {
+        public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
         {
-            public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
-            {
-                return x.manufacturer.CompareTo(y.manufacturer);
-            }
+            return x.Name.CompareTo(y.Name);
         }
+    }
+
+    class CandyByManufacturerSorter : IComparer<Candy>
+    {
+        public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
+        {
+            return x.Manufacturer.CompareTo(y.Manufacturer);
+        }
+    }
 }
