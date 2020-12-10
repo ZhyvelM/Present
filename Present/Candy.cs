@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Present
@@ -25,45 +23,6 @@ namespace Present
         public override string ToString()
         {
             return $"{Name} Manufacturer:{Manufacturer} weight: {Weight} sugar: {Sugar}";
-        }
-    }
-}
-
-namespace Present.Sorters
-{
-    class CandyByWeightSorter : IComparer<Candy>
-    {
-        public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
-        {
-            if (x.Weight < y.Weight) return 1;
-            else if (x.Weight > y.Weight) return -1;
-            else return 0;
-        }
-    }
-
-    class CandyBySugarSorter : IComparer<Candy>
-    {
-        public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
-        {
-            if (x.Sugar < y.Sugar) return 1;
-            else if (x.Sugar > y.Sugar) return -1;
-            else return 0;
-        }
-    }
-
-    class CandyByNameSorter : IComparer<Candy>
-    {
-        public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
-        {
-            return x.Name.CompareTo(y.Name);
-        }
-    }
-
-    class CandyByManufacturerSorter : IComparer<Candy>
-    {
-        public int Compare([AllowNull] Candy x, [AllowNull] Candy y)
-        {
-            return x.Manufacturer.CompareTo(y.Manufacturer);
         }
     }
 }
