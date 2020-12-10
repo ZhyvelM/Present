@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Text;
 
 namespace Present
 {
     public abstract class Candy
+
     {
         public string Name { get; }
         public string Manufacturer{get; }
@@ -23,6 +25,11 @@ namespace Present
         public override string ToString()
         {
             return $"{Name} Manufacturer:{Manufacturer} weight: {Weight} sugar: {Sugar}";
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }
