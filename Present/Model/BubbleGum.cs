@@ -7,9 +7,15 @@ namespace Present
     [Serializable]
     class BubbleGum : Candy
     {
-        public BubbleGum(string name, string manufacturer, double weight, double sugar, int count) : base(name, manufacturer, weight, sugar, count)
+        int AvgDurationOfChewing { get; }
+        public BubbleGum(string name, string manufacturer, double weight, double sugar, int count, int duration) : base(name, manufacturer, weight, sugar, count)
         {
+            AvgDurationOfChewing = duration;
+        }
 
+        public override string ToString()
+        {
+            return base.ToString() + $" average duration of chewing: {AvgDurationOfChewing}";
         }
     }
 }

@@ -7,8 +7,17 @@ namespace Present
     [Serializable]
     class CandyBar : Candy
     {
-        public CandyBar(string name, string manufacturer, double weight, double sugar, int count) : base(name, manufacturer, weight, sugar, count)
+        bool ContainsNuts { get; }
+        public CandyBar(string name, string manufacturer, double weight, double sugar, int count, bool nuts) : base(name, manufacturer, weight, sugar, count)
         {
+            ContainsNuts = nuts;
+        }
+
+        public override string ToString()
+        {
+            string str;
+            if (ContainsNuts) str = "contains nuts"; else str = "without nuts";
+            return base.ToString() + str;
         }
     }
 }
