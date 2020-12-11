@@ -6,42 +6,37 @@ using System.Text;
 
 namespace Present
 {
+    [Serializable]
     class NewYearGift
     {
         List<Candy> Candies { get; }
-
         public NewYearGift()
         {
             Candies = new List<Candy>();
         }
-
         public override string ToString()
         {
             string output = "";
             foreach (Candy c in Candies) 
             {
-                output += c;
+                output += c + "\n";
             }
             return output;
         }
-
         public void Add(Candy candy)
         {
             Candies.Add(candy);
         }
-
         public double GetWeight()
         {
             double totalWeight = 0;
             Candies.ForEach(o => totalWeight += o.Weight * o.Count);
             return totalWeight;
         }
-
         public List<Candy> GetCandiesBySugarRange(double min, double max)
         {
             return Candies.FindAll(o => o.Sugar >= min && o.Sugar <= max);
         }
-
         public void SortByWeigth()
         {
             Candies.Sort(new CandyByWeightSorter());

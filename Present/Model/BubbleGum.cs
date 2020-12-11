@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Present
 {
+    [Serializable]
     class BubbleGum : Candy
     {
         public BubbleGum(string name, string manufacturer, double weight, double sugar, int count) : base(name, manufacturer, weight, sugar, count)
