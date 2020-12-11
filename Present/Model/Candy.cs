@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Present
 {
+    [Serializable]
     public abstract class Candy
 
     {
@@ -25,11 +26,6 @@ namespace Present
         public override string ToString()
         {
             return $"{Name} Manufacturer:{Manufacturer} weight: {Weight} sugar: {Sugar}";
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
         }
     }
 }
